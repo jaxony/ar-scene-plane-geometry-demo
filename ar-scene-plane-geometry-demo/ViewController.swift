@@ -72,6 +72,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         scenePlaneGeometry?.update(from: planeAnchor.geometry)
         let planeNode = SCNNode(geometry: scenePlaneGeometry)
         planeNode.name = "\(currPlaneId)"
+        planeNode.opacity = 0.25
+        if planeAnchor.alignment == .horizontal {
+            planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
+        } else {
+            planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        }
         currPlaneId += 1
         return planeNode
     }
